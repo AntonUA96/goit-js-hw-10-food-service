@@ -14,4 +14,24 @@ const Theme = {
     DARK: 'dark-theme',
   };
 
+  const body = document.querySelector('body');
+  const checkBox = document.querySelector('#theme-switch-toggle');
   
+  
+  body.classList.add(Theme.LIGHT);
+
+  checkBox.addEventListener('change', onChange);
+
+function onChange(e) {
+body.classList.toggle(Theme.DARK);
+
+localStorage.setItem('Theme', body.classList);
+};
+
+const saveMessage = localStorage.getItem('Theme');
+
+if(saveMessage === 'light-theme dark-theme') {
+
+  body.classList.add(Theme.DARK);
+  checkBox.checked = true;
+}
